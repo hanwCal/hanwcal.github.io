@@ -834,3 +834,23 @@ figure {
 .gif {
 	width: 100%; /* each gif will take up the full width of its grid cell */
 }
+
+/* Add this CSS to your custom.css file */
+
+@media (max-width: 768px) {
+	.entry-content {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.entry-content figure,
+	.entry-content div {
+		width: 100%;
+		margin-right: 0;
+	}
+
+	.entry-content img {
+		width: 100%;
+		height: auto;
+	}
+}
