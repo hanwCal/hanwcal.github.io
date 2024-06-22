@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Han - FM-AR Assistance</title>
+
+	<!-- meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- css -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/ionicons.min.css">
+	<link rel="stylesheet" href="../css/pace.css">
+	<link rel="stylesheet" href="../css/custom.css">
+
+	<!-- js -->
+	<script src="../js/jquery-2.1.3.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/pace.min.js"></script>
+	<script src="../js/modernizr.custom.js"></script>
+	<script src="../js/script.js"></script>
+
+</head>
+
+<body id="single">
+<div class="container">
+	<header id="site-header">
+		<div class="row">
+			<div class="col-md-4 col-sm-5 col-xs-8">
+				<div class="logo">
+					<h1><a href="../index.html"><b>Research</b> &amp; Project</a></h1>
+				</div>
+			</div><!-- col-md-4 -->
+			<div class="col-md-8 col-sm-7 col-xs-4">
+				<nav class="main-nav" role="navigation">
+					<div class="navbar-header">
+						<button type="button" id="trigger-overlay" class="navbar-toggle">
+							<span class="ion-navicon"></span>
+						</button>
+					</div>
+				</nav>
+			</div><!-- col-md-8 -->
+		</div>
+	</header>
+</div>
+
+<div class="content-body">
+	<div class="container">
+		<div class="row">
+			<main class="col-md-8">
+				<article class="post post-1">
+					<header class="entry-header">
+						<h1 class="entry-title">Your Tesla can see more than you do? Not anymore.</h1>
+					</header>
+					<div class="entry-meta">
+						<a>V2X-based Driving Perception Assistance System</a>
+					</div>
+					<figcaption style="font-size: 12px">Application demo in simulated VR environment: Traffic Light Recognition for visual impaired driver</figcaption>
+					<div class="entry-content clearfix">
+						<div style="display: flex; justify-content: space-between;">
+							<figure>
+								<img src="../img/ar-assit-demo-0.png" alt="Normal View Traffic Light" class="img-responsive" style="width: 400px; height: 300px;">
+								<figcaption style="font-size: 12px">Normal view of traffic light.</figcaption>
+							</figure>
+							<figure>
+								<img src="../img/ar-assit-demo-1.png" alt="Color Blind Mode Traffic Light" class="img-responsive" style="width: 400px; height: 300px;">
+								<figcaption style="font-size: 12px">Traffic light in protanopia mode.</figcaption>
+							</figure>
+							<figure>
+								<img src="../img/ar-assit-demo-2.gif" alt="Traffic Light Phase Indicator" class="img-responsive" style="width: 400px; height: 300px;">
+								<figcaption style="font-size: 12px">Traffic light phase indicator with our system.</figcaption>
+							</figure>
+						</div>
+
+
+
+						<p>Our research focuses on integrating foundation models (FMs) with augmented reality (AR) to develop a more interactive and responsive driving assistance system. This project aims to leverage the multimodal perception and generation capabilities of FMs to interpret complex driver commands and provide real-time visual aids, such as traffic object identification and highlighting.</p>
+						<p>The system employ advanced data collection techniques using onboard sensors like Lidar and cameras, along with external sources such as high-definition maps and real-time traffic updates. This data will be processed through a multi-modal data fusion algorithm to create a cohesive understanding of the environment, enabling accurate 3D reconstruction and amodal tracking of objects.</p>
+						<figure>
+							<img src="../img/ar-assit-diag.png" alt="System Pipeline" class="img-responsive">
+							<figcaption style="font-size: 12px">System pipeline from data collection to AR visualization.</figcaption>
+						</figure>
+						<p>A key innovation in our approach is the use of a structured Scenegraph, proposed in <a href="gromit.html">previous work</a>, to translate the complexity of the 3D world into a format understandable by FMs. This allows the system to process varied natural language commands and generate executable scripts for AR rendering tasks. A specialized large language model (LLM), trained on driving-related tasks, will interpret the Scenegraph and natural language queries to produce relevant scripts.</p>
+						<p>The system's design emphasizes adaptability through human-in-loop interactions, where drivers provide feedback in natural language. This iterative learning process allows the FM to refine its parameters and enhance its specialization in specific functionalities, improving the system's effectiveness over time.</p>
+
+						<figure>
+							<img src="../img/ar-assit-amodal-cam.png" alt="Amodal Tracking in Unity" class="img-responsive">
+							<figcaption style="font-size: 12px">Amodal tracking demo in Unity simulated environment.</figcaption>
+						</figure>
+
+					</div>
+				</article>
+			</main>
+			<aside class="col-md-4">
+				<div class="widget widget-recent-posts">
+					<h3 class="widget-title">Related Links</h3>
+					<ul>
+						<li>
+							<a href="https://www.youtube.com/watch?v=Riky0i48I5E">Demo Video in VR</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</div>
+</div>
+
+<div class="read-more cl-effect-14">
+	<a href="../index.html" class="more-link"><span class="meta-nav">←</span> Back</a>
+</div>
+
+<!-- Footer -->
+<div class="height-40px"></div>
+<div class="vg-footer" id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 py-3">
+				<div class="footer-info">
+					<p>More About Me</p>
+					<hr class="divider">
+					<ul class="list-unstyled">
+						<li><a href="https://scholar.google.com/citations?hl=en&user=MyYz0tgAAAAJ" target="_blank">Google Scholar</a></li>
+						<li><a href="" target="_blank">Résumé</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-6 col-lg-3 py-3">
+				<div class="float-lg-right">
+					<p>Follow</p>
+					<hr class="divider">
+					<ul class="list-unstyled">
+						<li><a href="https://www.linkedin.com/in/hanwcal/" target="_blank">LinkedIn</a></li>
+						<li><a href="https://www.instagram.com/han_ucb/" target="_blank">Instagram</a></li>
+						<li>(I'm an amateur photographer!)</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 py-3">
+				<div class="float-lg-right">
+					<p>Contact</p>
+					<hr class="divider">
+					<ul class="list-unstyled">
+						<li>hanw@berkeley.edu</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 py-3">
+				<div class="float-lg-right">
+					<p>Affiliation</p>
+					<hr class="divider">
+					<ul class="list-unstyled">
+						<a href="https://bair.berkeley.edu/" target="_blank">
+							<li>Berkeley Artificial Intelligence Research (BAIR)</li></a>
+						<a href="https://deepdrive.berkeley.edu/" target="_blank">
+							<li>Berkeley DeepDrive (BDD)</li></a>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> <!-- End footer -->
+</body>
+</html>
