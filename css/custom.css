@@ -855,3 +855,17 @@ figure {
 		height: auto;
 	}
 }
+
+/* top right icon */
+.custom-icon {
+	position: absolute;
+	right: 10px;  /* Adjust based on your layout */
+	top: -10px;    /* Adjust based on your layout */
+	width: 120px;  /* New size, adjust as necessary */
+	height: auto; /* Keeps the aspect ratio intact */
+}
+
+
+.col-md-8.col-sm-7.col-xs-4 {
+	position: relative;
+}
