@@ -50,42 +50,45 @@
 			<main class="col-md-8">
 				<article class="post post-1">
 					<header class="entry-header">
-						<h1 class="entry-title">Automating Browser-Based Workflows with LLMs and Computer Vision</h1>
+						<h1 class="entry-title">Multi-Agent Automation for Browser Workflows with LLMs and Computer Vision</h1>
 					</header>
 					<div class="entry-meta">
-						<a>Exploring the potential of large language models and computer vision in automating web interactions.</a>
+						<a>Discover the power of multi-agent systems in browser automation through collaboration and task distribution using LLMs and computer vision.</a>
 					</div>
 					<div class="entry-content clearfix">
-						<p>Why do robotics scientists value humanoid robots? Because all the infrastructure and tools of current society are intended for humanoids.</p>
-						<p>We believe that for workflow automation, vision-based LLMs are the equivalent of humanoid robots in robotics because most current computer software and tools are designed for and optimized around human's vision-based interactions. Vision-based LLMs can interpret and interact with these systems in ways that mimic human behavior, making them highly adaptable and effective in automating tasks across a wide range of applications.</p>
-						<figure>
-							<img src="../img/webauto-catfood.gif" alt="Automated Web Interaction Demo" class="img-responsive">
-							<figcaption style="font-size: 12px">Demonstration of automated interactions:"Could you find me some can food for cats?"</figcaption>
-						</figure>
-						<p>Automation of browser-based workflows has traditionally involved writing custom scripts for specific websites, often relying on DOM parsing and XPath-based interactions. These approaches can be fragile and susceptible to breaking when website layouts change. Recent advancements in large language models (LLMs) and computer vision offer a robust alternative by enabling real-time interaction with web elements based on visual and textual inputs.</p>
-						<p>The system integrates LLMs and computer vision to interpret web elements, generate interaction plans, and execute them without developer intervention. This approach allows the system to operate on websites it has never encountered before, adapt to layout changes, and apply a single workflow across multiple websites.</p>
-						<figure>
-							<img src="../img/webauto-diag.png" alt="System Diagram" class="img-responsive">
-							<figcaption style="font-size: 12px">System diagram highlighting the process of input processing, scene understanding, and output generation.</figcaption>
-						</figure>
-						<p>Key features of this approach include:
+						<p>When managing complex tasks, multi-agent systems shine by dividing responsibilities among specialized agents, ensuring each subtask is handled optimally. </p>
+						<iframe width="100%" height="315" src="https://www.youtube.com/embed/AkXV-k_DEMc?si=1bkHM59Jh-lMqPHL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<p>Automation of browser-based workflows has traditionally involved writing custom scripts for specific websites, often relying on DOM parsing and XPath-based interactions. These approaches can be fragile and susceptible to breaking when website layouts change. However, a multi-agent approach utilizing LLMs and computer vision adapts to dynamic websites by assigning agents to individual subtasks like element detection, action selection, and monitoring outcomes.</p>
+
+						<p>The multi-agent framework enhances:
 						<ul>
-							<li><strong>Adaptability:</strong> The system can function on new websites without requiring customized code.</li>
-							<li><strong>Resilience:</strong> It is resistant to layout changes, as it does not rely on predetermined selectors.</li>
-							<li><strong>Scalability:</strong> A single workflow can be applied to numerous websites.</li>
-							<li><strong>Reasoning:</strong> The use of LLMs enables handling complex interactions and inferring information.</li>
-						</ul>
-						</p>
-						<p>Demonstrations of this system were conducted in various scenarios, such as generating insurance quotes, performing competitor analysis, and automating job applications. Quantitative evaluations indicate a high success rate in generating accurate interactions, while qualitative feedback from developers highlights the system's potential benefits and areas for improvement.</p>
-						<p>Key contributions of this work include:
-						<ul>
-							<li>Designing a system for integrating real-time behavior generation in web automation.</li>
-							<li>Evaluating the performance and reliability of the system in various scenarios.</li>
-							<li>Analyzing feedback from developers regarding integration into existing workflows.</li>
+							<li><strong>Adaptability:</strong> Agents handle new websites without customized scripts.</li>
+							<li><strong>Resilience:</strong> Layout changes don't hinder workflow.</li>
+							<li><strong>Scalability:</strong> Multiple agents collaborate for a seamless experience across diverse environments.</li>
+							<li><strong>Complex Reasoning:</strong> Agents leverage LLMs to manage sophisticated interactions.</li>
 						</ul>
 						</p>
 
-						<p>Real-time behavior generation offers promising opportunities for enhancing web automation. However, addressing quality control and maintaining user expectations are essential for broader adoption. Future work will focus on developing robust guardrail systems to manage the quality and impact of generated behaviors effectively.</p>
+						<figure>
+							<img src="../img/webauto-diag.png" alt="System Diagram" class="img-responsive">
+							<figcaption style="font-size: 12px">Multi-agent system diagram showing input processing, agent collaboration, and task completion: Each agent is responsible for a specific subtask. Starting with Element Selecting, agents extract HTML elements from the webpage. These elements are then passed to Action Selecting, where the most relevant action is determined. Action Description and Formatting organize actions into a structured, executable format. The Monitor Agent logs the workflow, handles errors, and ensures action validity. This structure, by separating roles into specialized agents, allows for a scalable, adaptable, and resilient web automation process.</figcaption>
+						</figure>
+
+						<p>Demonstrations using this multi-agent approach include automated insurance quotes, competitive analysis, and job applications. The system shows high reliability in handling both structured and unstructured interactions. Quantitative tests highlight its accuracy, while developer feedback emphasizes the enhanced automation experience.</p>
+
+						<p>Key contributions:
+						<ul>
+							<li>Introducing a multi-agent architecture for dynamic web environments.</li>
+							<li>Performance evaluation across various application domains.</li>
+							<li>Feedback integration for future system improvements.</li>
+						</ul>
+						</p>
+
+						<p>Looking forward, refining the agents' coordination and building robust quality control mechanisms will be crucial in scaling this system for broader use.</p>
+						<figure>
+							<img src="../img/webauto-catfood.gif" alt="Automated Web Interaction Demo" class="img-responsive">
+							<figcaption style="font-size: 12px">Demo: Collaborative agents performing a search task.</figcaption>
+						</figure>
 					</div>
 				</article>
 			</main>
