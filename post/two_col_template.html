@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Text Review Page</title>
+    <!-- Add blank favicon -->
+    <link rel="icon" href="data:,">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .left-column, .right-column {
+            padding: 20px;
+            overflow-y: scroll;
+            height: 100%;
+            scrollbar-width: thin;
+            scrollbar-color: #888 #f1f1f1;
+        }
+
+        .left-column {
+            width: 60%;
+            border-right: 1px solid #ddd;
+            background-color: #f9f9f9;
+            transition: width 0.3s ease;
+        }
+
+        .left-column.expanded {
+            width: 100%;
+        }
+
+        .right-column {
+            width: 40%;
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        .right-column.hidden {
+            width: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .highlight {
+            background-color: #ffff99;
+            padding: 2px;
+            cursor: pointer;
+        }
+
+        .highlight:hover {
+            background-color: #ffeb3b;
+        }
+
+        .comment {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .comment-collection {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .comment-collection-header {
+            padding: 10px 15px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .header-preview {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        .comment-collection-content {
+            display: none;
+            padding: 10px 15px;
+        }
+
+        .comment-collection-content.expanded {
+            display: block;
+        }
+
+        .comment-status {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        .status-solved {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .status-unsolved {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .vote-count {
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        .vote-stats {
+            display: inline-flex;
+            gap: 8px;
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        .vote-up {
+            color: #28a745;
+        }
+
+        .vote-down {
+            color: #dc3545;
+        }
+
+        .comment-header {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .comment-body {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        /* New styles for nested comments */
+        .comment-replies {
+            margin-left: 20px;
+            border-left: 2px solid #e0e0e0;
+            padding-left: 15px;
+        }
+
+        .comment-reply {
+            padding: 8px 0;
+            font-size: 0.95em;
+        }
+
+        .reply-metadata {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            background-color: #f1f1f1;
+            z-index: 10;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .toggle-button {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .toggle-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Update flash effect CSS */
+        @keyframes flash-highlight {
+            0% {
+                background-color: #fff7d1;
+                transform: scale(1);
+            }
+            50% {
+                background-color: #ffe066;
+                transform: scale(1.02);
+            }
+            100% {
+                background-color: #f8f9fa;
+                transform: scale(1);
+            }
+        }
+
+        .comment-collection-header.flash-effect {
+            animation: flash-highlight 1s ease-out;
+        }
+
+        /* Webkit scrollbar styling */
+        .left-column::-webkit-scrollbar,
+        .right-column::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .left-column::-webkit-scrollbar-track,
+        .right-column::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .left-column::-webkit-scrollbar-thumb,
+        .right-column::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .left-column::-webkit-scrollbar-thumb:hover,
+        .right-column::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Add toggle button -->
+    <button class="toggle-button" id="toggleComments">Hide Comments</button>
+    
+    <!-- Left Column: Text Content -->
+    <div class="left-column">
+        <div class="header">
+            <h1>Article/Paper Title</h1>
+        </div>
+        <p id="para1">
+            <span class="highlight" data-comment="comment1">This is the introduction of the article.</span>
+            It sets the stage for the topics to be discussed later, giving context and highlighting the key areas of focus.
+        </p>
+        <p id="para2">
+            In the following sections, we will examine the <span class="highlight" data-comment="comment2">background and related work</span> that forms the foundation of this study.
+        </p>
+        <p id="para3">
+            A detailed <span class="highlight" data-comment="comment3">methodology</span> section explains the approach used in this research, ensuring replicability and validity of results.
+        </p>
+        <p id="para4">
+            The results section includes <span class="highlight" data-comment="comment4">statistical analyses</span>, graphical representations, and detailed comparisons with existing studies.
+        </p>
+        <p id="para5">
+            Finally, the conclusion wraps up the article by <span class="highlight" data-comment="comment5">summarizing key findings</span> and suggesting areas for future work.
+        </p>
+        <p id="para6">
+            <span class="highlight" data-comment="comment6">Additional insights</span> provided in the appendices include raw data and supplementary materials.
+        </p>
+        <p id="para7">
+            This paragraph highlights the potential <span class="highlight" data-comment="comment7">impact of the research</span> on both theoretical and practical applications.
+        </p>
+    </div>
+
+    <!-- Right Column: Comments -->
+    <div class="right-column">
+        <div class="header">
+            <h1>Comments</h1>
+        </div>
+        
+        <!-- Comment Collection for Introduction -->
+        <div class="comment-collection" id="comment1">
+            <div class="comment-collection-header">
+                <div>
+                    <span class="comment-header">Comment on Introduction</span>
+                    <span class="comment-status status-unsolved">Unsolved</span>
+                    <span class="vote-stats">
+                        <span class="vote-up">👍 3</span>
+                        <span class="vote-down">👎 1</span>
+                    </span>
+                </div>
+            </div>
+            <div class="comment-collection-content">
+                <div class="comment">
+                    <div class="comment-body">
+                        Consider elaborating on the importance of the key areas highlighted in the introduction.
+                        <span class="comment-status status-unsolved">Unsolved</span>
+                        <span class="vote-stats">
+                            <span class="vote-up">👍 3</span>
+                            <span class="vote-down">👎 1</span>
+                        </span>
+                    </div>
+                    <div class="comment-replies">
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                I agree. Maybe we could add examples from recent papers in the field.
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 1</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by John Doe • 2 days ago</div>
+                        </div>
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                Good suggestion. I can help provide some relevant examples.
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 2</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by Jane Smith • 1 day ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-body">
+                        The introduction could use more concrete examples.
+                        <span class="comment-status status-solved">Solved</span>
+                        <span class="vote-stats">
+                            <span class="vote-up">👍 1</span>
+                            <span class="vote-down">👎 0</span>
+                        </span>
+                    </div>
+                    <div class="comment-replies">
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                I've added three examples from recent literature.
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 1</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by Author • 3 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example of another comment collection -->
+        <div class="comment-collection" id="comment2">
+            <div class="comment-collection-header">
+                <div>
+                    <span class="comment-header">Comment on Background</span>
+                    <span class="comment-status status-unsolved">Unsolved</span>
+                    <span class="vote-stats">
+                        <span class="vote-up">👍 4</span>
+                        <span class="vote-down">👎 0</span>
+                    </span>
+                </div>
+            </div>
+            <div class="comment-collection-content">
+                <div class="comment">
+                    <div class="comment-body">
+                        The background section could benefit from a brief mention of newer studies from 2023-2024.
+                        <span class="comment-status status-unsolved">Unsolved</span>
+                        <span class="vote-stats">
+                            <span class="vote-up">👍 4</span>
+                            <span class="vote-down">👎 0</span>
+                        </span>
+                    </div>
+                    <div class="comment-replies">
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                Here are some relevant papers from 2023: [links to papers]
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 2</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by Sarah Johnson • 1 day ago</div>
+                        </div>
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                Don't forget to include the breakthrough paper by Smith et al. (2024)
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 1</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by Mike Brown • 12 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-body">
+                        Previous literature review is comprehensive.
+                        <span class="comment-status status-solved">Solved</span>
+                        <span class="vote-stats">
+                            <span class="vote-up">👍 2</span>
+                            <span class="vote-down">👎 0</span>
+                        </span>
+                    </div>
+                    <div class="comment-replies">
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                Agreed, the historical context is well covered.
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 1</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by Reviewer 2 • 4 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comment Collection for Methodology -->
+        <div class="comment-collection" id="comment3">
+            <div class="comment-collection-header">
+                <div>
+                    <span class="comment-header">Comment on Methodology</span>
+                    <span class="comment-status status-unsolved">Unsolved</span>
+                    <span class="vote-stats">
+                        <span class="vote-up">👍 5</span>
+                        <span class="vote-down">👎 0</span>
+                    </span>
+                </div>
+            </div>
+            <div class="comment-collection-content">
+                <div class="comment">
+                    <div class="comment-body">
+                        The methodology needs more detail about sample size calculations.
+                        <span class="comment-status status-unsolved">Unsolved</span>
+                        <span class="vote-stats">
+                            <span class="vote-up">👍 5</span>
+                            <span class="vote-down">👎 0</span>
+                        </span>
+                    </div>
+                    <div class="comment-replies">
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                We should include power analysis results too.
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 3</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by Statistical Reviewer • 2 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comment Collection for Statistical Analyses -->
+        <div class="comment-collection" id="comment4">
+            <div class="comment-collection-header">
+                <div>
+                    <span class="comment-header">Comment on Statistical Analyses</span>
+                    <span class="comment-status status-solved">Solved</span>
+                    <span class="vote-stats">
+                        <span class="vote-up">👍 2</span>
+                        <span class="vote-down">👎 0</span>
+                    </span>
+                </div>
+            </div>
+            <div class="comment-collection-content">
+                <div class="comment">
+                    <div class="comment-body">
+                        Consider adding confidence intervals to all estimates.
+                        <span class="comment-status status-solved">Solved</span>
+                        <span class="vote-stats">
+                            <span class="vote-up">👍 2</span>
+                            <span class="vote-down">👎 0</span>
+                        </span>
+                    </div>
+                    <div class="comment-replies">
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                Added 95% CIs to all main analyses.
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 1</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by Author • 1 day ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comment Collection for Key Findings -->
+        <div class="comment-collection" id="comment5">
+            <div class="comment-collection-header">
+                <div>
+                    <span class="comment-header">Comment on Key Findings</span>
+                    <span class="comment-status status-unsolved">Unsolved</span>
+                    <span class="vote-stats">
+                        <span class="vote-up">👍 3</span>
+                        <span class="vote-down">👎 0</span>
+                    </span>
+                </div>
+            </div>
+            <div class="comment-collection-content">
+                <div class="comment">
+                    <div class="comment-body">
+                        The implications of finding #3 need more discussion.
+                        <span class="comment-status status-unsolved">Unsolved</span>
+                        <span class="vote-stats">
+                            <span class="vote-up">👍 3</span>
+                            <span class="vote-down">👎 0</span>
+                        </span>
+                    </div>
+                    <div class="comment-replies">
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                This could be linked to Theory X from Smith (2023).
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 2</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by Expert Reviewer • 1 day ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comment Collection for Additional Insights -->
+        <div class="comment-collection" id="comment6">
+            <div class="comment-collection-header">
+                <div>
+                    <span class="comment-header">Comment on Additional Insights</span>
+                    <span class="comment-status status-unsolved">Unsolved</span>
+                    <span class="vote-stats">
+                        <span class="vote-up">👍 2</span>
+                        <span class="vote-down">👎 0</span>
+                    </span>
+                </div>
+            </div>
+            <div class="comment-collection-content">
+                <div class="comment">
+                    <div class="comment-body">
+                        The supplementary materials could be better organized.
+                        <span class="comment-status status-unsolved">Unsolved</span>
+                        <span class="vote-stats">
+                            <span class="vote-up">👍 2</span>
+                            <span class="vote-down">👎 0</span>
+                        </span>
+                    </div>
+                    <div class="comment-replies">
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                I suggest creating a table of contents for the appendices.
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 1</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by Editor • 3 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comment Collection for Research Impact -->
+        <div class="comment-collection" id="comment7">
+            <div class="comment-collection-header">
+                <div>
+                    <span class="comment-header">Comment on Research Impact</span>
+                    <span class="comment-status status-unsolved">Unsolved</span>
+                    <span class="vote-stats">
+                        <span class="vote-up">👍 4</span>
+                        <span class="vote-down">👎 0</span>
+                    </span>
+                </div>
+            </div>
+            <div class="comment-collection-content">
+                <div class="comment">
+                    <div class="comment-body">
+                        Consider adding specific industry applications.
+                        <span class="comment-status status-unsolved">Unsolved</span>
+                        <span class="vote-stats">
+                            <span class="vote-up">👍 4</span>
+                            <span class="vote-down">👎 0</span>
+                        </span>
+                    </div>
+                    <div class="comment-replies">
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                The automotive sector could particularly benefit from these findings.
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 2</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by Industry Expert • 1 day ago</div>
+                        </div>
+                        <div class="comment-reply">
+                            <div class="comment-body">
+                                Healthcare applications should also be mentioned.
+                                <span class="vote-stats">
+                                    <span class="vote-up">👍 1</span>
+                                    <span class="vote-down">👎 0</span>
+                                </span>
+                            </div>
+                            <div class="reply-metadata">Reply by Medical Researcher • 12 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Update the highlight click handler
+    document.querySelectorAll('.highlight').forEach(highlight => {
+        highlight.addEventListener('click', () => {
+            const commentId = highlight.getAttribute('data-comment');
+            const commentElement = document.getElementById(commentId);
+            const rightColumn = document.querySelector('.right-column');
+
+            if (commentElement) {
+                // Remove any existing flash effects
+                document.querySelectorAll('.comment-collection-header').forEach(header => {
+                    header.classList.remove('flash-effect');
+                });
+
+                // Add flash effect to the header instead of the whole collection
+                const header = commentElement.querySelector('.comment-collection-header');
+                header.classList.add('flash-effect');
+                
+                // Automatically expand the content
+                const content = commentElement.querySelector('.comment-collection-content');
+                content.classList.add('expanded');
+                
+                // Calculate scroll position relative to right column
+                const rightColumnTop = rightColumn.getBoundingClientRect().top;
+                const commentTop = commentElement.getBoundingClientRect().top;
+                const scrollPosition = commentTop - rightColumnTop + rightColumn.scrollTop;
+                
+                // Scroll only the right column
+                rightColumn.scrollTo({
+                    top: scrollPosition,
+                    behavior: 'smooth'
+                });
+
+                // Optional: Remove the flash effect after animation completes
+                setTimeout(() => {
+                    header.classList.remove('flash-effect');
+                }, 1000);
+            }
+        });
+    });
+
+    // Add toggle functionality for comment collections
+    document.querySelectorAll('.comment-collection-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
+            content.classList.toggle('expanded');
+        });
+    });
+
+    // Function to find the highest voted unsolved comment
+    function updateCollectionHeaders() {
+        document.querySelectorAll('.comment-collection').forEach(collection => {
+            const comments = collection.querySelectorAll('.comment');
+            let highestVoted = null;
+            let maxScore = -1;
+
+            comments.forEach(comment => {
+                const status = comment.querySelector('.comment-status').textContent;
+                if (status === 'Unsolved') {
+                    const upVotes = parseInt(comment.querySelector('.vote-up').textContent.split(' ')[1]);
+                    const downVotes = parseInt(comment.querySelector('.vote-down').textContent.split(' ')[1]);
+                    const score = upVotes - downVotes;
+                    if (score > maxScore) {
+                        maxScore = score;
+                        highestVoted = comment;
+                    }
+                }
+            });
+
+            if (highestVoted) {
+                const header = collection.querySelector('.comment-collection-header');
+                const headerStatus = header.querySelector('.comment-status');
+                const headerVoteStats = header.querySelector('.vote-stats');
+                const commentContent = highestVoted.querySelector('.comment-body').childNodes[0].textContent.trim();
+                
+                // Update header structure
+                header.innerHTML = `
+                    <div class="header-title">
+                        <span class="comment-header">${collection.querySelector('.comment-header').textContent}</span>
+                        <span class="comment-status status-unsolved">Unsolved</span>
+                        <span class="vote-stats">
+                            <span class="vote-up">${highestVoted.querySelector('.vote-up').textContent}</span>
+                            <span class="vote-down">${highestVoted.querySelector('.vote-down').textContent}</span>
+                        </span>
+                    </div>
+                    <div class="header-preview">${commentContent}</div>
+                `;
+            }
+        });
+    }
+
+    // Initialize headers
+    updateCollectionHeaders();
+
+    // Add toggle functionality
+    const toggleButton = document.getElementById('toggleComments');
+    const rightColumn = document.querySelector('.right-column');
+    const leftColumn = document.querySelector('.left-column');
+    let isHidden = false;
+
+    toggleButton.addEventListener('click', () => {
+        isHidden = !isHidden;
+        rightColumn.classList.toggle('hidden');
+        leftColumn.classList.toggle('expanded');
+        toggleButton.textContent = isHidden ? 'Show Comments' : 'Hide Comments';
+    });
+</script>
+</body>
+</html>
