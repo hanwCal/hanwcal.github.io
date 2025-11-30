@@ -110,19 +110,26 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
+// Mobile menu overlay functionality
+// Note: This is initialized by components/loader.js after header loads
+// This code is kept for backwards compatibility with pages not using the component loader
 (function() {
     var triggerBttn = document.getElementById( 'trigger-overlay' ),
-        overlay = document.querySelector( 'div.overlay' ),
-        closeBttn = overlay.querySelector( 'button.overlay-close' );
-        transEndEventNames = {
-            'WebkitTransition': 'webkitTransitionEnd',
-            'MozTransition': 'transitionend',
-            'OTransition': 'oTransitionEnd',
-            'msTransition': 'MSTransitionEnd',
-            'transition': 'transitionend'
-        },
-        transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
-        support = { transitions : Modernizr.csstransitions };
+        overlay = document.querySelector( 'div.overlay' );
+    
+    // Exit early if required elements don't exist
+    if (!triggerBttn || !overlay) return;
+    
+    var closeBttn = overlay.querySelector( 'button.overlay-close' );
+    var transEndEventNames = {
+        'WebkitTransition': 'webkitTransitionEnd',
+        'MozTransition': 'transitionend',
+        'OTransition': 'oTransitionEnd',
+        'msTransition': 'MSTransitionEnd',
+        'transition': 'transitionend'
+    };
+    var transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ];
+    var support = { transitions : Modernizr.csstransitions };
 
     function toggleOverlay() {
         if( classie.has( overlay, 'open' ) ) {
@@ -148,5 +155,7 @@ if ( typeof define === 'function' && define.amd ) {
     }
 
     triggerBttn.addEventListener( 'click', toggleOverlay );
-    closeBttn.addEventListener( 'click', toggleOverlay );
+    if (closeBttn) {
+        closeBttn.addEventListener( 'click', toggleOverlay );
+    }
 })();

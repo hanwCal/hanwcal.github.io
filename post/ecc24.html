@@ -1,156 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Han - RL-PDE/ODE</title>
+    <title>Han - RL-PDE/ODE</title>
 
-	<!-- meta -->
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- css -->
-	<link rel="stylesheet" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/ionicons.min.css">
-	<link rel="stylesheet" href="../css/pace.css">
-	<link rel="stylesheet" href="../css/custom.css">
+    <!-- css -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="../css/pace.css">
+    <link rel="stylesheet" href="../css/custom.css">
 
-	<!-- js -->
-	<script src="../js/jquery-2.1.3.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/pace.min.js"></script>
-	<script src="../js/modernizr.custom.js"></script>
-	<script src="../js/script.js"></script>
-
+    <!-- js -->
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/pace.min.js"></script>
+    <script src="../js/modernizr.custom.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../components/loader.js"></script>
 </head>
 
 <body id="single">
-<div class="container">
-	<header id="site-header">
-		<div class="row">
-			<div class="col-md-4 col-sm-5 col-xs-8">
-				<div class="logo">
-					<h1><a href="../index.html"><b>Research</b> &amp; Project</a></h1>
-				</div>
-			</div><!-- col-md-4 -->
-			<div class="col-md-8 col-sm-7 col-xs-4">
-				<nav class="main-nav" role="navigation">
-					<div class="navbar-header">
-						<button type="button" id="trigger-overlay" class="navbar-toggle">
-							<span class="ion-navicon"></span>
-						</button>
-					</div>
-				</nav>
-			</div><!-- col-md-8 -->
-		</div>
-	</header>
-</div>
+<!-- Header Container - Content loaded by loader.js -->
+<div id="header-container" class="container"></div>
 
 <div class="content-body">
-	<div class="container">
-		<div class="row">
-			<main class="col-md-8">
-				<article class="post post-1">
-					<header class="entry-header">
-						<h1 class="entry-title">Reinforcement Learning-Based Adaptive Speed Controllers in Mixed Autonomy Condition</h1>
-						<div class="entry-meta">
-							<a>Research on optimizing traffic flow through reinforcement learning and autonomous vehicles.</a>
-						</div>
-					</header>
-					<div class="entry-content clearfix">
-						<figure>
-							<img src="../img/wave_demo.gif" alt="Wave Demo" class="img-responsive">
-							<figcaption style="font-size: 12px">Density shockwave in traffic flow, also known as "phantom congestion" or stop-and-go wave</figcaption>
-						</figure>
+    <div class="container">
+        <div class="row">
+            <main class="col-md-8">
+                <article class="post post-1">
+                    <header class="entry-header">
+                        <h1 class="entry-title">Reinforcement Learning-Based Adaptive Speed Controllers in Mixed Autonomy Condition</h1>
+                        <div class="entry-meta">
+                            <a>Research on optimizing traffic flow through reinforcement learning and autonomous vehicles.</a>
+                        </div>
+                    </header>
+                    <div class="entry-content clearfix">
+                        <figure>
+                            <img src="../img/wave_demo.gif" alt="Wave Demo" class="img-responsive">
+                            <figcaption style="font-size: 12px">Density shockwave in traffic flow, also known as "phantom congestion" or stop-and-go wave</figcaption>
+                        </figure>
 
-						<p>The integration of Automated Vehicles (AVs) into traffic systems offers significant potential to improve traffic congestion and efficiency. Our recent work introduces an adaptive speed controller designed for mixed autonomy scenarios, where AVs and human-driven vehicles interact.</p>
-						<figure>
-							<img src="../img/ecc24_diagram.png" alt="ECC Diagram" class="img-responsive">
-							<figcaption style="font-size: 12px">System Diagram of the Proposed RL & PDE/ODE Integration</figcaption>
-						</figure>
-						<p>This study models traffic dynamics using a system of coupled Partial Differential Equations (PDE) and Ordinary Differential Equations (ODE). The PDE captures the flow of human-driven traffic, while the ODE characterizes the trajectories of AVs. A speed policy for AVs is derived using a Reinforcement Learning (RL) algorithm within an Actor-Critic framework, seamlessly integrating with the PDE-ODE model to optimize the AV control policy.</p>
-						<figure>
-							<img src="../img/pdeode.gif" alt="PDE/ODE Sim" class="img-responsive">
-							<figcaption style="font-size: 12px">PDE/ODE simulated density heatmap and the proposed RL-AV controller in red curve.</figcaption>
-						</figure>
+                        <p>The integration of Automated Vehicles (AVs) into traffic systems offers significant potential to improve traffic congestion and efficiency. Our recent work introduces an adaptive speed controller designed for mixed autonomy scenarios, where AVs and human-driven vehicles interact.</p>
+                        <figure>
+                            <img src="../img/ecc24_diagram.png" alt="ECC Diagram" class="img-responsive">
+                            <figcaption style="font-size: 12px">System Diagram of the Proposed RL & PDE/ODE Integration</figcaption>
+                        </figure>
+                        <p>This study models traffic dynamics using a system of coupled Partial Differential Equations (PDE) and Ordinary Differential Equations (ODE). The PDE captures the flow of human-driven traffic, while the ODE characterizes the trajectories of AVs. A speed policy for AVs is derived using a Reinforcement Learning (RL) algorithm within an Actor-Critic framework, seamlessly integrating with the PDE-ODE model to optimize the AV control policy.</p>
+                        <figure>
+                            <img src="../img/pdeode.gif" alt="PDE/ODE Sim" class="img-responsive">
+                            <figcaption style="font-size: 12px">PDE/ODE simulated density heatmap and the proposed RL-AV controller in red curve.</figcaption>
+                        </figure>
 
-						<p>The RL-based adaptive speed controller was tested through numerical simulations, demonstrating improvements in key traffic metrics such as minimum flux, average speed, and speed deviation. These improvements highlight the potential of AVs to act as dynamic actuators within traffic flow, helping to mitigate congestion and enhance overall traffic efficiency.</p>
-						<p>Our approach frames the control problem within a Markov Decision Process (MDP) and employs the Actor-Critic method to update policy parameters. The adaptive controller's performance was evaluated in various traffic scenarios, showcasing its capability to adjust AV speeds in real-time and optimize traffic conditions.</p>
-						<p>The results of our simulations indicate that the adaptive speed controller can enhance traffic flow, reduce bottlenecks, and smooth traffic waves. The Proximal Policy Optimization (PPO) algorithm, used for optimizing the control strategy, showed significant improvements in traffic management through iterative refinement of AV control policies.</p>
-						<p>This research contributes to the theoretical understanding of traffic dynamics and provides a practical framework for deploying AVs to improve traffic systems. Future work will focus on expanding the scalability of this method, integrating real-world traffic data, and exploring the socio-economic impacts of AV-based traffic control systems.</p>
-					</div>
-				</article>
-			</main>
-			<aside class="col-md-4">
-				<div class="widget widget-recent-posts">
-					<h3 class="widget-title">Publication</h3>
-					<h5>Accepted by <a href="https://ieeexplore.ieee.org/abstract/document/10590883?casa_token=n7baoVsn7BYAAAAA:T8iKFF-9xAf3HEhNEFjCYeUEqeOHY68HIA9-5wKMWN3NBdEupFuSLD_JOmAd97UxgYfoqZitpKY">ECC 2024</a>:</h5>
-					<ul>
-						<li>
-							<a href="https://ieeexplore.ieee.org/abstract/document/10590883?casa_token=n7baoVsn7BYAAAAA:T8iKFF-9xAf3HEhNEFjCYeUEqeOHY68HIA9-5wKMWN3NBdEupFuSLD_JOmAd97UxgYfoqZitpKY"><mark>Wang, H.,</mark> Nick Zinat Matin, H., Delle Monache, M. L. (2024, June). Reinforcement learning-based adaptive speed controllers in mixed autonomy condition. In 2024 European Control Conference (ECC). IEEE.</a>
-						</li>
-					</ul>
-				</div>
-			</aside>
-		</div>
-	</div>
+                        <p>The RL-based adaptive speed controller was tested through numerical simulations, demonstrating improvements in key traffic metrics such as minimum flux, average speed, and speed deviation. These improvements highlight the potential of AVs to act as dynamic actuators within traffic flow, helping to mitigate congestion and enhance overall traffic efficiency.</p>
+                        <p>Our approach frames the control problem within a Markov Decision Process (MDP) and employs the Actor-Critic method to update policy parameters. The adaptive controller's performance was evaluated in various traffic scenarios, showcasing its capability to adjust AV speeds in real-time and optimize traffic conditions.</p>
+                        <p>The results of our simulations indicate that the adaptive speed controller can enhance traffic flow, reduce bottlenecks, and smooth traffic waves. The Proximal Policy Optimization (PPO) algorithm, used for optimizing the control strategy, showed significant improvements in traffic management through iterative refinement of AV control policies.</p>
+                        <p>This research contributes to the theoretical understanding of traffic dynamics and provides a practical framework for deploying AVs to improve traffic systems. Future work will focus on expanding the scalability of this method, integrating real-world traffic data, and exploring the socio-economic impacts of AV-based traffic control systems.</p>
+                    </div>
+                </article>
+            </main>
+            <aside class="col-md-4">
+                <div class="widget widget-recent-posts">
+                    <h3 class="widget-title">Publication</h3>
+                    <h5>Accepted by <a href="https://ieeexplore.ieee.org/abstract/document/10590883?casa_token=n7baoVsn7BYAAAAA:T8iKFF-9xAf3HEhNEFjCYeUEqeOHY68HIA9-5wKMWN3NBdEupFuSLD_JOmAd97UxgYfoqZitpKY">ECC 2024</a>:</h5>
+                    <ul>
+                        <li>
+                            <a href="https://ieeexplore.ieee.org/abstract/document/10590883?casa_token=n7baoVsn7BYAAAAA:T8iKFF-9xAf3HEhNEFjCYeUEqeOHY68HIA9-5wKMWN3NBdEupFuSLD_JOmAd97UxgYfoqZitpKY"><mark>Wang, H.,</mark> Nick Zinat Matin, H., Delle Monache, M. L. (2024, June). Reinforcement learning-based adaptive speed controllers in mixed autonomy condition. In 2024 European Control Conference (ECC). IEEE.</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
 </div>
 
 <div class="read-more cl-effect-14">
-	<a href="../index.html" class="more-link"><span class="meta-nav">←</span> Back</a>
+    <a href="../index.html" class="more-link"><span class="meta-nav">←</span> Back</a>
 </div>
-<!-- Footer -->
-<div class="height-40px"></div>
-<div class="vg-footer", id="footer">
-	<!-- <h3 class="text-center">Contact</h3> -->
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-3 py-3">
-				<div class="footer-info">
-					<p>More About Me</p>
-					<hr class="divider">
-					<ul class="list-unstyled">
-						<li><a href="https://scholar.google.com/citations?hl=en&user=MyYz0tgAAAAJ" target="_blank">Google Scholar</a></li>
-						<li><a href="../attachments/Resume___Han_Wang_2025.pdf" target="_blank">Résumé</a></li>
-						<li><a href="https://chatgpt.com/share/6765edff-d9e0-8007-8795-9d27913912a2" target="_blank">Ask GPT about me</a></li>
-					</ul>
-				</div>
-			</div>
 
-			<div class="col-md-6 col-lg-3 py-3">
-				<div class="float-lg-right">
-					<p>Follow</p>
-					<hr class="divider">
-					<ul class="list-unstyled">
-                            <li><a href="https://github.com/hanwCal" target="_blank">Github</a></li>
-                            <li><a href="https://huggingface.co/hanwcal" target="_blank">HuggingFace</a></li>
-                            <li><a href="https://www.linkedin.com/in/hanwcal/" target="_blank">Linkedin</a></li>
-                            <li><a href="https://www.instagram.com/han_ucb/" target="_blank">Instagram</a></li>
-                            <li>(I'm an amateur photographer!)</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-3 py-3">
-				<div class="float-lg-right">
-					<p>Contact</p>
-					<hr class="divider">
-					<ul class="list-unstyled">
-						<li>hanw@berkeley.edu</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-3 py-3">
-				<div class="float-lg-right">
-					<p>Affiliation</p>
-					<hr class="divider">
-					<ul class="list-unstyled">
-						<a href="https://bair.berkeley.edu/" target="_blank">
-							<li>Berkeley Artificial Intelligence Research (BAIR)</li></a>
-						<a href="https://deepdrive.berkeley.edu/" target="_blank">
-							<li>Berkeley DeepDrive (BDD)</li></a>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> <!-- End footer -->
+<!-- Footer Container - Content loaded by loader.js -->
+<div class="height-40px"></div>
+<div id="footer-container"></div>
 </body>
 </html>
