@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CIRCLES Project - MLDM Lab</title>
+
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CIRCLES - Congestion Impacts Reduction via CAV-in-the-loop Lagrangian Energy Smoothing">
+
+    <!-- css -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="../css/pace.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <!-- js -->
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/pace.min.js"></script>
+    <script src="../js/modernizr.custom.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../components/loader.js"></script>
+</head>
+
+<body id="single" data-lab-name="MLDM Lab">
+<!-- Header Container - Content loaded by loader.js -->
+<div id="header-container" class="container">
+    <!-- Fallback header (replaced by loader.js when JS works) -->
+    <header id="site-header">
+        <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-8">
+                <div class="logo">
+                    <h1><a href="../index.html"><b>MLDM</b> Lab</a></h1>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-7 col-xs-4">
+                <nav class="main-nav" role="navigation">
+                    <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+                        <li><a href="../index.html" data-hover="Home">Home</a></li>
+                        <li><a href="../index.html#research" data-hover="Research">Research</a></li>
+                        <li><a href="../index.html#team" data-hover="Team">Team</a></li>
+                        <li><a href="../index.html#publications" data-hover="Publications">Publications</a></li>
+                        <li><a href="../index.html#contact" data-hover="Contact">Contact</a></li>
+                    </ul>
+                    <div class="navbar-header">
+                        <button type="button" id="trigger-overlay" class="navbar-toggle">
+                            <span class="ion-navicon"></span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div class="overlay overlay-hugeinc">
+    <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#research">Research</a></li>
+            <li><a href="../index.html#team">Team</a></li>
+            <li><a href="../index.html#publications">Publications</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-8">
+                <article class="post post-1">
+                    <header class="entry-header">
+                        <h1 class="entry-title">Hierarchical Speed Planner for Automated Vehicles: Insights from the MegaVanderTest</h1>
+                        <div class="entry-meta">
+                            <a>Yes, we sent literally <strong>100</strong> auto-driving vehicles to the morning peak of an open highway.</a>
+                        </div>
+                    </header>
+                    <div class="entry-content clearfix">
+                        <!-- Hero Image -->
+                        <figure>
+                            <img src="../img/post_circles/circles_0.jpg" alt="CIRCLES Project" class="img-responsive">
+                            <figcaption style="font-size: 12px">The MVT convoys preparing for the upcoming morning peak test in the middle of a Nashville sunrise.</figcaption>
+                        </figure>
+
+                        <!-- Introduction -->
+                        <p>The <strong>Congestion Impacts Reduction via CAV-in-the-loop Lagrangian Energy Smoothing (CIRCLES)</strong> project aims to improve traffic flow and reduce energy consumption using deep reinforcement learning and self-driving cars.</p>
+
+                        <!-- Control Objectives -->
+                        <p>There are two control objectives in the experiment:</p>
+
+                        <p><strong>1. Save fuel consumption</strong> by optimizing the speed profile of vehicles to smooth out the density shockwave in traffic flow.</p>
+
+                        <figure>
+                            <img src="../img/post_circles/wave_demo.gif" alt="Wave Demo" class="img-responsive">
+                            <figcaption style="font-size: 12px"><b>Objective I:</b> Density shockwave in traffic flow, also known as "phantom congestion" or stop-and-go wave.</figcaption>
+                        </figure>
+
+                        <p><strong>2. Improve traffic throughput</strong> at the bottlenecks by controlling the density using controlled AVs as macro flow regulators.</p>
+
+                        <div style="display: flex; justify-content: space-between;">
+                            <figure>
+                                <img src="../img/post_circles/circles_sheep_bn.gif" alt="Sheep BN" class="img-responsive" style="width: 400px; height: 300px;">
+                            </figure>
+                            <figure>
+                                <img src="../img/post_circles/circles_bottleneck_flow.gif" alt="Flow BN" class="img-responsive" style="width: 400px; height: 300px;">
+                            </figure>
+                        </div>
+                        <p style="font-size: 12px"><b>Objective II:</b> (Left) Border Collie improves the throughput of sheepflow by controlling the sheep density at the bottleneck. In MVT, AVs will be our Border Collies. (Right) Using AV as coordinator for bottleneck management. (Credit: <a href="https://flow-project.github.io/">FLOW Project</a>)</p>
+
+                        <!-- MegaVanderTest -->
+                        <p>As the final field test of CIRCLES, the MegaVanderTest (MVT) was conducted on a 14.5-km stretch of Interstate I-24 in Nashville, Tennessee. This large-scale traffic experiment deployed a fleet of <strong>100 automated vehicles</strong> to explore the practical application of the hierarchical Speed Planner framework, which integrates server-side algorithms with vehicle-side execution to manage variable speed limits in mixed autonomy traffic environments.</p>
+
+                        <figure>
+                            <img src="../img/post_circles/circles_2.gif" alt="I-24 MOTION" class="img-responsive">
+                            <figcaption style="font-size: 12px">Preliminary vehicle and traffic flow detection in the I-24 Mobility Technology Interstate Observation Network (Credit: MOTION).</figcaption>
+                        </figure>
+
+                        <p>The hierarchical Speed Planner introduced in this study focuses on enhancing traffic flow, reducing congestion, and improving fuel efficiency. It achieves this by combining macroscopic traffic data from sources like INRIX with microscopic observations from controlled vehicles. The Traffic State Estimation (TSE) module within the planner enhances real-time traffic data, and the Target Speed Design module generates optimal speed profiles for vehicles, aiming to smooth traffic waves and mitigate bottlenecks.</p>
+
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/PA3lyoCZnP0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                        <p>During the MVT, the Speed Planner demonstrated notable improvements in traffic management. The field test results show an <strong>overall 8% traffic density decrease</strong>, with a specific decrease of 7% upstream, 10% downstream, and a <strong>52% decrease during the congestion formation phase</strong> at bottlenecks.</p>
+
+                    </div>
+                </article>
+            </main>
+
+            <aside class="col-md-4">
+                <div class="widget widget-recent-posts">
+                    <h3 class="widget-title">Publication</h3>
+                    <h5>Published on Dedicated IEEE CSM Special Issue:</h5>
+                    <ul>
+                        <li>
+                            <a href="https://ieeexplore.ieee.org/abstract/document/10858622">[MVT] Lee, J. W., Wang, H., Jang, K., Lichtlé, N., Hayat, A., Bunting, M., ... & Bayen, A. M. (2025). Traffic Control via Connected and Automated Vehicles (CAVs): An Open-Road Field Experiment with 100 CAVs. IEEE Control Systems, 45(1), 28-60.</a>
+                        </li>
+                        <li>
+                            <a href="https://ieeexplore.ieee.org/abstract/document/10858621">[Speed Planner] Wang, H., Fu, Z., Lee, J. W., Matin, H. N. Z., Alanqary, A., Urieli, D., ... & Delle Monache, M. L. (2025). Hierarchical speed planner for automated vehicles: A framework for Lagrangian variable speed limit in mixed-autonomy traffic. IEEE Control Systems, 45(1), 111-138.</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget widget-recent-posts">
+                    <h3 class="widget-title">Related Links</h3>
+                    <ul>
+                        <li>
+                            <a href="https://circles-consortium.github.io/">Project Homepage</a>
+                        </li>
+                        <li>
+                            <a href="https://news.berkeley.edu/2022/11/22/massive-traffic-experiment-pits-machine-learning-against-phantom-jams/">Berkeley News</a>
+                        </li>
+                        <li>
+                            <a href="https://abc7news.com/uc-berkeley-open-track-experiment-alleviating-traffic-jams-circles-consortium-car-automation-software/12469669/">ABC 7 News</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+
+<!-- Back Button -->
+<div class="read-more cl-effect-14">
+    <a href="../index.html" class="more-link"><span class="meta-nav">&larr;</span> Back to Home</a>
+</div>
+
+<!-- Footer Container - Content loaded by loader.js -->
+<div class="height-40px"></div>
+<div id="footer-container"></div>
+</body>
+</html>
+

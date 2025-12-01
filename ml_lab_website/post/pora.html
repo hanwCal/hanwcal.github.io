@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PORA: Black-box Safety Evaluation - MLDM Lab</title>
+
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PORA - Probabilistic Occupancy Risk Assessment for Black-box Safety Evaluation of Autonomous Vehicles">
+
+    <!-- css -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="../css/pace.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <!-- js -->
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/pace.min.js"></script>
+    <script src="../js/modernizr.custom.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../components/loader.js"></script>
+</head>
+
+<body id="single" data-lab-name="MLDM Lab">
+<!-- Header Container - Content loaded by loader.js -->
+<div id="header-container" class="container">
+    <!-- Fallback header (replaced by loader.js when JS works) -->
+    <header id="site-header">
+        <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-8">
+                <div class="logo">
+                    <h1><a href="../index.html"><b>MLDM</b> Lab</a></h1>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-7 col-xs-4">
+                <nav class="main-nav" role="navigation">
+                    <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+                        <li><a href="../index.html" data-hover="Home">Home</a></li>
+                        <li><a href="../index.html#research" data-hover="Research">Research</a></li>
+                        <li><a href="../index.html#team" data-hover="Team">Team</a></li>
+                        <li><a href="../index.html#publications" data-hover="Publications">Publications</a></li>
+                        <li><a href="../index.html#contact" data-hover="Contact">Contact</a></li>
+                    </ul>
+                    <div class="navbar-header">
+                        <button type="button" id="trigger-overlay" class="navbar-toggle">
+                            <span class="ion-navicon"></span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div class="overlay overlay-hugeinc">
+    <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#research">Research</a></li>
+            <li><a href="../index.html#team">Team</a></li>
+            <li><a href="../index.html#publications">Publications</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-8">
+                <article class="post post-1">
+                    <header class="entry-header">
+                        <h1 class="entry-title">Black-box Safety Evaluation of Autonomous Vehicles via Monte Carlo Simulation</h1>
+                        <div class="entry-meta">
+                            <a>A vendor-agnostic framework for third-party AV safety assessment using probabilistic occupancy prediction</a>
+                        </div>
+                    </header>
+                    <div class="entry-content clearfix">
+                        <!-- Hero Image -->
+                        <figure>
+                            <img src="../img/post_pora/pora_1.gif" alt="Vehicle Interaction Simulation" class="img-responsive">
+                            <figcaption style="font-size: 12px">Simulation of vehicle interactions and collision risk assessment using probabilistic occupancy heatmaps.</figcaption>
+                        </figure>
+
+                        <!-- Introduction -->
+                        <p>Ensuring the safety of autonomous vehicles (AVs) requires rigorous evaluation before deployment. Traditional methods either require access to internal controller details (white-box) or use deterministic surrogates that under-represent real-world complexity. We present a <strong>fully black-box framework</strong> that enables third-party entities (insurance companies, government agencies, regulators) to objectively evaluate and compare AV safety without accessing internal algorithms, parameters, or decision logic.</p>
+
+                        <!-- Architecture -->
+                        <h3>Three-Module Architecture</h3>
+                        <p>Our framework uses a modular, implementation-agnostic architecture consisting of three interchangeable components:</p>
+
+                        <figure>
+                            <img src="../img/post_pora/architecture_diagram.png" alt="System Architecture" class="img-responsive">
+                            <figcaption style="font-size: 12px">Complete pipeline: Scenario generation, Heatmap predictor, Goal sampler, Trajectory connector, Simulation, and Monte Carlo aggregation.</figcaption>
+                        </figure>
+
+                        <p><strong>Module 1: Heatmap Predictor</strong> - Generates probabilistic occupancy predictions for future agent positions using a Transformer-based encoder and GAN-based decoder. Outputs probability distributions over a 200m x 200m grid with 3-second prediction horizon.</p>
+
+                        <figure>
+                            <img src="../img/post_pora/occupancy_heatmap.png" alt="Occupancy Heatmap" class="img-responsive">
+                            <figcaption style="font-size: 12px">Occupancy heatmap generated by the probabilistic predictor model, showing future position distributions.</figcaption>
+                        </figure>
+
+                        <p><strong>Module 2: Goal Sampler</strong> - Converts probabilistic heatmaps into discrete goal points using various strategies: pure-probability sampling, maximum-probability sampling, non-maximum suppression (NMS), edge-case sampling for stress-testing, and density-based sampling.</p>
+
+                        <p><strong>Module 3: Trajectory Connector</strong> - Converts sampled goals into continuous, dynamically feasible trajectories using a neural network trained on real-world driving sequences.</p>
+
+                        <!-- Simulation Platform -->
+                        <h3>Monte Carlo Simulation Framework</h3>
+                        <figure>
+                            <img src="../img/post_pora/simulator_screenshot.png" alt="Simulation Platform" class="img-responsive">
+                            <figcaption style="font-size: 12px">Three-panel visualization: Global map view (left), ego vehicle detailed view with heatmap (center), and local heatmap predictions for surrounding vehicles (right).</figcaption>
+                        </figure>
+
+                        <p>The simulation framework integrates real-world trajectory data from the <strong>Argoverse 2 dataset</strong> (11,000+ scenarios from 6 U.S. cities) and road geometry to create realistic traffic scenarios. We use SUMO for microscopic traffic simulation and run Monte Carlo trials to quantify safety metrics statistically.</p>
+
+                        <!-- PORA Metric -->
+                        <h3>Probabilistic Occupancy Risk Assessment (PORA)</h3>
+                        <p>We introduce <strong>PORA</strong> as a novel surrogate safety measure that combines collision probability with Time-to-Collision severity. Unlike traditional TTC metrics, PORA:</p>
+                        <ul>
+                            <li>Uses full probabilistic occupancy heatmaps over future positions</li>
+                            <li>Captures both spatial and temporal uncertainties</li>
+                            <li>Produces smooth, monotonic risk gradients</li>
+                            <li>Demonstrates superior predictive power and reliability</li>
+                        </ul>
+
+                        <figure>
+                            <img src="../img/post_pora/combined_heatmap_pora.png" alt="PORA Comparison" class="img-responsive">
+                            <figcaption style="font-size: 12px">Comparison of safety metrics: Incidents, TTC-1, TTC-2, and PORA across different statistical measures. PORA shows the most stable and interpretable patterns.</figcaption>
+                        </figure>
+
+                        <!-- Results -->
+                        <h3>Key Results</h3>
+                        <p>Our framework successfully captures causal effects of degraded sensing and slower reaction times. Key findings include:</p>
+                        <ul>
+                            <li><strong>Clear monotonic risk gradient</strong>: Collision risk increases smoothly with larger reaction delay and smaller perception range</li>
+                            <li><strong>Tail risk amplification</strong>: 80th percentile scenarios show 1-2 orders of magnitude higher collision rates than median</li>
+                            <li><strong>Optimal configuration</strong>: HM(1,1) with NMS_6 sampler achieves 94% reduction in spurious incidents compared to naive sampling</li>
+                            <li><strong>Controller benchmarking</strong>: Framework successfully differentiates between controller designs (RL-based vs. sample-based)</li>
+                        </ul>
+
+                        <figure>
+                            <img src="../img/post_pora/combined_heatmap_incidents.png" alt="Incident Rate Heatmaps" class="img-responsive">
+                            <figcaption style="font-size: 12px">Collision rate as function of perception range (R) and reaction delay (τ), demonstrating the framework's sensitivity to operational parameters.</figcaption>
+                        </figure>
+
+                        <!-- Applications -->
+                        <h3>Applications & Impact</h3>
+                        <p>This black-box evaluation framework enables:</p>
+                        <ul>
+                            <li><strong>Insurance Companies</strong>: Objective risk assessment without proprietary access</li>
+                            <li><strong>Government Agencies</strong>: Regulatory compliance verification</li>
+                            <li><strong>Industry Consortia</strong>: Standardized benchmarking across manufacturers</li>
+                            <li><strong>Certification Bodies</strong>: Transparent safety certification</li>
+                        </ul>
+                        <p>By providing a vendor-agnostic evaluation pathway, this framework contributes to safer transportation systems and accelerates responsible AV deployment.</p>
+
+                    </div>
+                </article>
+            </main>
+
+            <aside class="col-md-4">
+                <div class="widget widget-recent-posts">
+                    <h3 class="widget-title">Publications</h3>
+                    <ul>
+                        <li>
+                            <a href="#">Wang, H., Paiva, A. R., Yeo, Y., Utke, J., & Delle Monache, M. L. (2025). Black-box Safety Evaluation of Autonomous Vehicles via Monte Carlo Simulation of Realistic Scenarios. <em>Transportation Research Part C</em> (under review).</a>
+                        </li>
+                        <li>
+                            <a href="https://arxiv.org/abs/2501.16480">Wang, H., Yeo, Y., Paiva, A. R., Utke, J., & Delle Monache, M. L. (2025). Dynamic Risk Assessment for Autonomous Vehicles from Spatio-Temporal Probabilistic Occupancy Heatmaps. <em>arXiv:2501.16480</em>.</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget widget-recent-posts">
+                    <h3 class="widget-title">Key Contributions</h3>
+                    <ul>
+                        <li>First fully black-box AV safety evaluation framework</li>
+                        <li>Modular, implementation-agnostic architecture</li>
+                        <li>PORA: Novel probabilistic risk metric</li>
+                        <li>Validated on Argoverse 2 dataset</li>
+                    </ul>
+                </div>
+                <div class="widget widget-recent-posts">
+                    <h3 class="widget-title">Collaborators</h3>
+                    <ul>
+                        <li>Allstate Insurance Company</li>
+                        <li>Berkeley DeepDrive</li>
+                    </ul>
+                </div>
+                <div class="widget widget-recent-posts">
+                    <h3 class="widget-title">Related Links</h3>
+                    <ul>
+                        <li>
+                            <a href="https://deepdrive.berkeley.edu/project/collision-indeterminacy-prediction-stochastic-trajectory-generation">Berkeley DeepDrive Project Page</a>
+                        </li>
+                        <li>
+                            <a href="https://www.argoverse.org/av2.html">Argoverse 2 Dataset</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+
+<!-- Back Button -->
+<div class="read-more cl-effect-14">
+    <a href="../index.html" class="more-link"><span class="meta-nav">&larr;</span> Back to Home</a>
+</div>
+
+<!-- Footer Container - Content loaded by loader.js -->
+<div class="height-40px"></div>
+<div id="footer-container"></div>
+</body>
+</html>
+
