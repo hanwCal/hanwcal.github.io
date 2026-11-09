@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Han Wang on co-founding Yumi Health and building a chart-grounded Minimum Data Set agent for skilled nursing.">
+    <title>Yumi Health | Han Wang</title>
+    <link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body class="project-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="brand" href="../index.html">Han Wang</a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../attachments/Resume___Han_Wang_2025.pdf">Résumé</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="shell" id="main">
+        <article>
+            <header class="article-header">
+                <p class="eyebrow">Project journal · Yumi Health</p>
+                <h1>Building an MDS agent inside the patient chart</h1>
+                <p class="lede">I co-founded Yumi Health to build an electronic health record for skilled nursing. Our Minimum Data Set agent starts with a retrieval pipeline we built in-house, so clinicians can inspect the chart records behind each suggested answer.</p>
+                <p class="article-meta">Han Wang · CTO and Co-founder, Yumi Health</p>
+            </header>
+
+            <div class="article-body">
+                <section>
+                    <h2>From the founding team to the first pilot</h2>
+                    <p>As CTO and co-founder, I helped recruit the founding engineering team and worked on-site with nursing home clinicians to get our first pilot into their hands. I built Yumi’s first iOS clinical copilot around live voice and the patient chart. It could prepare draft orders, notes, and assessments and ask for missing details before a clinician reviewed what to save.</p>
+                    <p>Co-founding Yumi has meant connecting product direction with hands-on engineering. Working alongside clinicians shaped how I built admission assessments, order sets, and care planning into the platform. Those workflows gave the agent both the clinical context to reason with and a place for clinicians to review its work.</p>
+                    <p>That approach carried into our MDS work. A Minimum Data Set assessment asks clinicians to code a resident’s condition and care from records that may be spread across nursing notes, evaluations, diagnoses, and treatment documentation. I worked on both sides of the agent, from retrieving source records for individual questions to putting the supporting records alongside suggestions in the assessment workflow.</p>
+                </section>
+
+                <section>
+                    <h2>How our home-built retrieval pipeline works</h2>
+                    <p>Each MDS question asks about a specific clinical fact and may have its own observation period. The pipeline handles those boundaries before it turns chart material into a suggested answer.</p>
+                    <ol class="pipeline">
+                        <li><strong>Set the window.</strong> Start with the resident, the MDS question, and the Assessment Reference Date, which anchors the question’s observation period.</li>
+                        <li><strong>Find relevant records.</strong> Combine clinician tags, rule-based links from structured chart fields, and keyword retrieval over notes. Keep each result linked to its original record.</li>
+                        <li><strong>Work out what the chart supports.</strong> Use rules for structured facts and a language model to interpret narrative. Check the proposed answer against the item’s allowed values and show gaps or conflicting records for review.</li>
+                        <li><strong>Show the answer with its source.</strong> Present a suggested answer, an explanation, and a link to the chart as Evidence. Relevant material that needs further review appears as a Reference. Clinicians decide what to apply to the assessment.</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2>Why an order and an administration need separate treatment</h2>
+                    <p>Consider an oxygen order. It helps the agent find a record relevant to an oxygen-therapy question. For a question about care actually delivered, a dated administration record can support an answer when it falls within the observation period. The order remains available as a Reference. The distinction makes it possible for a reviewer to see which fact supports the suggestion and where documentation is still needed.</p>
+                    <p>The same review workflow lets clinicians inspect how selected answers affect a Medicare case-mix preview before they apply any changes to the assessment.</p>
+                </section>
+
+                <section>
+                    <h2>Further reading</h2>
+                    <ul>
+                        <li><a href="https://yumihealth.ai/">Yumi Health</a></li>
+                        <li><a href="https://www.cms.gov/medicare/quality/nursing-home-improvement/resident-assessment-instrument-manual">CMS Resident Assessment Instrument Manual</a></li>
+                        <li><a href="layr.html">My MDS work at Layr</a></li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell">
+            <a href="../index.html#projects">All projects</a>
+            <a href="https://www.linkedin.com/in/hanwcal/">LinkedIn</a>
+        </div>
+    </footer>
+</body>
+</html>

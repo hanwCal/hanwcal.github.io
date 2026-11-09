@@ -1,373 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Han Wang</title>
-
-    <!-- meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    <link rel="stylesheet" href="css/pace.css">
-    <link rel="stylesheet" href="css/custom.css">
-    
-    <!-- Custom Responsive Styles -->
-    <style>
-      /* For devices smaller than 768px, adjust flex layouts and override fixed widths */
-      @media (max-width: 768px) {
-        .entry-content {
-          display: block !important;
-        }
-        .entry-content figure {
-          width: 100% !important;
-          margin-right: 0 !important;
-          margin-bottom: 15px;
-        }
-        .entry-content > div {
-          width: 100% !important;
-        }
-        /* Hide only the profile photo based on its src attribute */
-        img[src="img/me.jpg"] {
-            display: none !important;
-        }
-      }
-      
-      /* Ensure that figures do not overflow their container */
-      figure.img-responsive-center {
-         max-width: 100%;
-      }
-    </style>
-
-    <!-- js -->
-    <script src="js/jquery-2.1.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/pace.min.js"></script>
-    <script src="js/modernizr.custom.js"></script>
-    <script src="js/script.js"></script>
-    <script src="components/loader.js"></script>
+    <title>Han Wang · CTO & Co-founder of Yumi</title>
+    <meta name="description" content="Han Wang, CTO and Co-founder of Yumi Health and Chief AI Scientist at Layr. Building clinical AI agents, home-built retrieval systems, and software for skilled nursing.">
+    <meta property="og:title" content="Han Wang · CTO & Co-founder of Yumi">
+    <meta property="og:description" content="Building clinical AI from the record to the workflow. Yumi, Layr, and research at UC Berkeley.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hanwcal.github.io/">
+    <meta property="og:image" content="https://hanwcal.github.io/img/han-wang.jpg">
+    <link rel="canonical" href="https://hanwcal.github.io/">
+    <link rel="stylesheet" href="css/portfolio.css">
 </head>
-
-<body data-show-bair-logo="true">
-<!-- Header Container - Content loaded by loader.js -->
-<div id="header-container" class="container"></div>
-
-<div class="content-body">
-    <div class="container">
-        <div class="row">
-            <main class="col-md-8">
-                <h1 class="page-title">About Me</h1>
-                <h4 class="page-title">Human-AI Interaction  |  Agentic AI  |  Autonomous Driving</h4>
-
-                <article class="post">
-                    <div class="entry-content clearfix" style="display: flex; align-items: flex-start;">
-                        <figure class="img-responsive-center" style="width: 220%; margin-right: 20px;">
-                            <img class="img-responsive" src="img/me.jpg" alt="Developer Image"
-                                 style="width: 100%; height: auto;">
-                        </figure>
-                        <div>
-                            <p>Welcome! I'm Han Wang, a Ph.D. candidate in <a href="https://bair.berkeley.edu/">Berkeley AI Research(BAIR)</a>
-                                and <a href="https://deepdrive.berkeley.edu/">Berkeley Deep Drive(BDD)</a> at UC Berkeley. My doctoral
-                                research focuses on improving traffic flow and urban mobility with connected and
-                                automated vehicles using <b>multi-agent system</b> framework. I have an interdisciplinary background in Computer Science and
-                                Transportation Engineering, with a keen interest in vision science and generative AI.</p>
-
-                            <p>I've worked on exciting projects around automated vehicles like developing speed planner
-                                for 100 AVs fieldtest, predicting vehicle trajectories and collision risk evaluations,
-                                supported by organizations including General Motors, Nissan, Toyota and Allstate. For
-                                personal projects, I enjoy working with AR/VR + GenAI technology and currently addicted
-                                to the development of Vision Pro. </p>
-
-                            <p>Hope you find them as exciting as I do!</p>
-                        </div>
-                    </div>
-                </article>
-
-            </main>
-
-            <aside class="col-md-4">
-                <div class="widget widget-recent-posts">
-                    <h3 class="widget-title">Recent Research</h3>
-                    <ul>
-                        <li>
-                            <a href="post/circles.html">CIRCLES: World's Largest Auto-driving Fieldtest</a>
-                        </li>
-                        <li>
-                            <a href="post/pora.html">PORA: Motion Prediction using Generative Model</a>
-                        </li>
-                        <li>
-                            <a href="post/blos.html">BLOS: VR Bike Simulator Rebuilding California Streets</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="widget widget-recent-posts">
-                    <h3 class="widget-title">Personal Projects</h3>
-                    <ul>
-                        <li>
-                            <a href="post/gromit.html">UIST2024 Best Paper: Runtime Behavior Generation</a>
-                        </li>
-                        <li>
-                            <a href="post/ar-assist.html">AR Perception Assistance with Amodal Tracking</a>
-                        </li>
-                        <li>
-                            <a href="post/webauto.html">Vision-based Browser Automation using GenAI</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="widget widget-recent-posts">
-                    <h3 class="widget-title">Open to Job!</h3>
-                    <ul>
-                        I'm open to the researcher and faculty job market for 2025. If you are interested in my
-                        research or have any potential opportunities, let's reach out!
-                    </ul>
-                </div>
-            </aside>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="brand" href="index.html" aria-label="Han Wang home">Han Wang<span class="brand-dot" aria-hidden="true">.</span></a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="#projects">Projects</a>
+                <a href="#research">Research</a>
+                <a href="attachments/Resume___Han_Wang_2025.pdf">Résumé <span aria-hidden="true">↗</span></a>
+            </nav>
         </div>
-    </div>
-    <hr class="divider">
-    <div class="height-40px"></div>
-    <h1 class="page-title">Featured Projects</h1>
-    <div class="content-body"><!--start Researches-->
-        <div class="container">
-            <div class="row">
-                <main class="col-md-12">
-
-                    <!--start CIRCLES-->
-                    <article class="post post-1">
-                        <header class="entry-header">
-                            <h1 class="entry-title">
-                                <a href="post/circles.html">Yes, we sent 100 auto-driving vehicles to the morning peak
-                                    of an open highway.</a>
-                            </h1>
-                            <div class="entry-meta">
-                                <a>Congestion Impacts Reduction via CAV-in-the-loop Lagrangian Energy Smoothing
-                                    (CIRCLES)</a>
-                            </div>
-                        </header>
-                        <div class="entry-content clearfix" style="display: flex; align-items: flex-start;">
-                            <figure class="img-responsive-center" style="width: 30%;height: 200px; margin-right: 20px;">
-                                <img class="img-responsive" src="img/circles_2_cover.gif" alt="CIRCLES Project Image">
-                            </figure>
-                            <div style="width: 70%;">
-                                <p>As the final field test of CIRCLES project, the MegaVanderTest (MVT) was a large-scale traffic experiment conducted on a 14.5-km
-                                    stretch of Interstate I-24 in Nashville, Tennessee, deploying a fleet of 100
-                                    automated vehicles to improve traffic flow and fuel efficiency. The experiment
-                                    utilized a hierarchical Speed Planner framework, integrating server-side algorithms
-                                    with vehicle-side execution to dynamically manage variable speed limits in mixed
-                                    autonomy traffic environments. The MVT demonstrated significant improvements in
-                                    traffic smoothness and fuel consumption, validating the practical viability of the
-                                    Speed Planner in real-world conditions.</p>
-                            </div>
-                        </div>
-                        <div class="read-more cl-effect-14">
-                            <a href="post/circles.html" class="more-link">Learn More <span class="meta-nav">→</span></a>
-                        </div>
-                    </article>
-                    <!--end CIRCLES-->
-
-                    <!--Start ECC24-->
-                    <article class="post post-1">
-                        <header class="entry-header">
-                            <h1 class="entry-title">
-                                <a href="post/ecc24.html">That math behind CIRCLES: Can learning-based controller work
-                                    with PDE/ODE dynamic?</a>
-                            </h1>
-                            <div class="entry-meta">
-                                <a>Reinforcement Learning-Based Adaptive Speed Controllers in PDE/ODE simulated Mixed
-                                    Autonomy Traffic Flow</a>
-                            </div>
-                        </header>
-                        <div class="entry-content clearfix" style="display: flex; align-items: flex-start;">
-                            <figure class="img-responsive-center" style="width: 30%;height: 300px; margin-right: 20px;">
-                                <img class="img-responsive" src="img/pdeode_cover.gif" alt="ECC24 Diagram">
-                            </figure>
-                            <div style="width: 70%;">
-                                <p>
-                                    This research introduces an adaptive speed controller for Automated Vehicles (AVs)
-                                    in mixed autonomy traffic, integrating a learning-based Reinforcement Learning (RL)
-                                    controller with sophisticated mathematical dynamics modeled by Partial Differential
-                                    Equations (PDE) and Ordinary Differential Equations (ODE). The RL algorithm,
-                                    operating within an Actor-Critic framework, optimizes AV control policies in
-                                    real-time by interacting with the PDE-ODE model. Numerical simulations demonstrate
-                                    significant improvements in traffic flow metrics, underscoring the potential of this
-                                    integrated approach to mitigate congestion and enhance overall traffic efficiency.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="read-more cl-effect-14">
-                            <a href="post/ecc24.html" class="more-link">Learn More <span class="meta-nav">→</span></a>
-                        </div>
-                    </article> <!--end ECC24-->
-
-                    <!--Start Web Automation Project-->
-                    <article class="post post-1">
-                        <header class="entry-header">
-                            <h1 class="entry-title">
-                                <a href="post/webauto.html">Automating That Boring Part of Your Browser Workflow</a>
-                            </h1>
-                            <div class="entry-meta">
-                                <a>Automation of browser-based workflows using <b>multi-agent vision-based LLM</b></a>
-                            </div>
-                        </header>
-                        <div class="entry-content clearfix" style="display: flex; align-items: flex-start;">
-                            <figure class="img-responsive-center" style="width: 30%;height: 200px; margin-right: 20px;">
-                                <img class="img-responsive" src="img/webauto-catfood.gif" alt="Web Automation Cover Image"
-                                     loading="lazy">
-                            </figure>
-                            <div style="width: 70%;">
-                                <p>
-                                    Why do robotics scientists value humanoid robots? Because all the infrastructure and tools of current society are intended for humanoids.
-                                </p>
-                                <p>
-                                    We believe that for workflow automation, vision-based LLMs are the equivalent of humanoid robots in robotics because most current computer software and tools are designed for and optimized around human interactions. Vision-based LLMs can interpret and interact with these systems in ways that mimic human behavior, making them highly adaptable and effective in automating tasks across a wide range of applications.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="read-more cl-effect-14">
-                            <a href="post/webauto.html" class="more-link">Learn More <span class="meta-nav">→</span></a>
-                        </div>
-                    </article> <!--end Web Automation Project-->
-
-                    <!--start PORA-->
-                    <article class="post post-1">
-                        <header class="entry-header">
-                            <h1 class="entry-title">
-                                <a href="post/pora.html">Could GAN generate a real frame of future?</a>
-                            </h1>
-                            <div class="entry-meta">
-                                <a>Probabilistic Occupancy Risk Assessment (PORA): Motion Prediction using Pre-Trained
-                                    Generative Model</a>
-                            </div>
-                        </header>
-                        <div class="entry-content clearfix" style="display: flex; align-items: flex-start;">
-                            <figure class="img-responsive-center" style="width: 30%;height: 200px; margin-right: 20px;">
-                                <img class="img-responsive" src="img/pora_0_cover.gif" alt="PORA Project Image"
-                                     loading="lazy">
-                            </figure>
-                            <div style="width: 70%;">
-                                <p>
-                                    In this research, the conditional generation capability of pre-trained image
-                                    generative models is proven to be capable of motion prediction of self-driving
-                                    vehicles. We introduce a novel Probabilistic Occupancy Risk Assessment (PORA)
-                                    measure, leveraging a generative model to predict vehicle occupancy and assess
-                                    collision risk in autonomous driving scenarios. The generative model, implemented as
-                                    a pre-trained GAN generator, creates occupancy heatmaps from traffic data, enabling
-                                    dynamic and uncertainty-aware risk evaluation. This approach demonstrates enhanced
-                                    accuracy in predicting potential collisions, offering a robust framework for
-                                    improving autonomous vehicle safety.</p>
-                            </div>
-                        </div>
-                        <div class="read-more cl-effect-14">
-                            <a href="post/pora.html" class="more-link">Learn More <span class="meta-nav">→</span></a>
-                        </div>
-                    </article>
-                    <!--end PORA-->
-
-                    <!--Start BLOS-->
-                    <article class="post post-1">
-                        <header class="entry-header">
-                            <h1 class="entry-title">
-                                <a href="post/blos.html">VR bike simulator rebuilding California streets</a>
-                            </h1>
-                            <div class="entry-meta">
-                                <a>Study the Bicycle Level of Service(BLOS) of variant scenarios by plugging riders into
-                                    it.</a>
-                            </div>
-                        </header>
-                        <div class="entry-content clearfix" style="display: flex; align-items: flex-start;">
-                            <figure class="img-responsive-center" style="width: 30%;height: 300px; margin-right: 20px;">
-                                <img class="img-responsive" src="img/blos_0_cover.gif" alt="BLOS Project Image"
-                                     loading="lazy">
-                            </figure>
-                            <div style="width: 70%;">
-                                <p>
-                                    In the Caltrans funded Bike Level of Service (BLOS) research, we built a virtual
-                                    reality bike simulator designed to facilitate urban planning and infrastructure
-                                    development. The simulator enables users to experience and evaluate different bike
-                                    lane configurations, road designs, and traffic scenarios, providing valuable
-                                    insights for optimizing street layouts and enhancing cyclist safety. BLOS offers a
-                                    user-friendly interface and realistic simulation environment, making it an effective
-                                    tool for urban planners, transportation engineers, and policymakers.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="read-more cl-effect-14">
-                            <a href="post/blos.html" class="more-link">Learn More <span class="meta-nav">→</span></a>
-                        </div>
-                    </article> <!--end BLOS-->
-
-                    <!--Start GROMIT-->
-                    <article class="post post-1">
-                        <header class="entry-header">
-                            <h1 class="entry-title">
-                                <a href="post/gromit.html">What's the game, then?</a>
-                            </h1>
-                            <div class="entry-meta">
-                                <a>Manuplate the simulation / gaming process via run time behavior generation</a>
-                            </div>
-                        </header>
-                        <div class="entry-content clearfix" style="display: flex; align-items: flex-start;">
-                            <figure class="img-responsive-center" style="width: 30%;height: 200px; margin-right: 20px;">
-                                <img class="img-responsive" src="img/gromit_0_cover.gif" alt="GROMIT Cover Image"
-                                     loading="lazy">
-                            </figure>
-                            <div style="width: 70%;">
-                                <p>
-                                    GROMIT, a system utilizing large language models for runtime behavior generation in
-                                    games, enables dynamic gameplay interactions by generating and integrating behaviors
-                                    based on player input without developer intervention. Evaluations show GROMIT's
-                                    effectiveness in specific scenarios, and interviews with developers reveal interest
-                                    in its potential applications, alongside concerns about quality and integration into
-                                    workflows. Future work aims to address these concerns by developing guardrail
-                                    systems to manage the quality and impact of generated behaviors.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="read-more cl-effect-14">
-                            <a href="post/gromit.html" class="more-link">Learn More <span class="meta-nav">→</span></a>
-                        </div>
-                    </article> <!--end GROMIT-->
-
-                    <!--Start AR-FM -->
-                    <article class="post post-1">
-                        <header class="entry-header">
-                            <h1 class="entry-title">
-                                <a href="post/ar-assist.html">Your Tesla can see more than you do? Not anymore</a>
-                            </h1>
-                            <div class="entry-meta">
-                                <a>Boost your visual perception with external sensors via integration of foundation models (FMs) and augmented reality (AR)</a>
-                            </div>
-                        </header>
-                        <div class="entry-content clearfix" style="display: flex; align-items: flex-start;">
-                            <figure class="img-responsive-center" style="width: 30%;height: 300px; margin-right: 20px;">
-                                <img class="img-responsive" src="img/ar-assit-demo-2.gif" alt="AR Cover Image"
-                                     loading="lazy">
-                            </figure>
-                            <div style="width: 70%;">
-                                <p>
-                                    This research integrates foundation models with augmented reality to enhance driving assistance systems by providing real-time visual aids and interpreting complex driver commands. The system uses advanced data collection and processing techniques to create a cohesive understanding of the environment, enabling accurate 3D reconstruction and amodal tracking of objects. Key innovations include a structured Scenegraph for processing varied natural language commands.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="read-more cl-effect-14">
-                            <a href="post/ar-assist.html" class="more-link">Learn More <span class="meta-nav">→</span></a>
-                        </div>
-                    </article> <!--end AR-FM-->
-
-                </main>
+    </header>
+    <main id="main">
+        <section class="hero shell" aria-labelledby="intro-title">
+            <div class="hero-copy">
+                <p class="eyebrow">Founder · Scientist · Builder</p>
+                <h1 id="intro-title">I’m Han.<br>CTO &amp; <span class="keep-together">Co-founder</span><br>of <a href="https://yumihealth.ai/">Yumi.</a></h1>
+                <p class="hero-intro">I build AI that works with clinicians, grounded in the patient record and connected to the work of care.</p>
+                <p class="hero-detail">At Yumi Health, I co-founded an AI-native platform for skilled nursing and lead its technical development. My work as Chief AI Scientist at Layr brings the same focus to clinical intelligence and MDS agents.</p>
+                <div class="actions">
+                    <a class="button" href="post/yumi.html">Building Yumi <span aria-hidden="true">→</span></a>
+                    <a class="text-link" href="https://www.linkedin.com/in/hanwcal/">Connect on LinkedIn <span aria-hidden="true">↗</span></a>
+                </div>
             </div>
+            <figure class="portrait">
+                <img src="img/han-wang.jpg" alt="Han Wang wearing a UC Berkeley sweatshirt" width="3964" height="5983" fetchpriority="high">
+                <figcaption><span>Han Wang</span><span>Healthcare AI · UC Berkeley</span></figcaption>
+            </figure>
+        </section>
+        <div class="focus-strip">
+            <div class="shell"><span>Clinical AI agents</span><span>Home-built retrieval</span><span>Human–AI interaction</span><span>Multi-agent systems</span></div>
         </div>
-    </div>
-    <hr class="divider">
-    <div class="height-40px"></div>
-    <h1 class="page-title">More About Me?</h1>
-    <h3 class="page-title">Discover my full resume, publications and some adorable cat photos!</h3>
-
-    <!-- Footer Container - Content loaded by loader.js -->
-    <div class="height-40px"></div>
-    <div id="footer-container"></div>
-</div>
+        <section class="section shell" id="projects" aria-labelledby="projects-title">
+            <div class="section-heading">
+                <div><p class="eyebrow">Building in healthcare</p><h2 id="projects-title">From clinical records<br>to useful intelligence.</h2></div>
+                    <p>My goal is to advance the state of the art in MDS agents. The engineering starts with the evidence a clinician needs to make a decision.</p>
+            </div>
+            <article class="featured-project">
+                <div class="project-copy">
+                    <p class="eyebrow">01 / Yumi Health</p>
+                    <h3><a href="post/yumi.html">Co-founding Yumi.<br>Building around care.</a></h3>
+                    <p class="role">CTO &amp; Co-founder</p>
+                    <p>From building with clinicians on site to shaping the platform and founding engineering team. An AI-native record, a clinical copilot, and MDS work connected in one place.</p>
+                    <p>Our home-built retrieval pipeline connects assessment questions to chart records, relevant dates, and evidence a clinician can inspect.</p>
+                    <a class="text-link" href="post/yumi.html">Read the Yumi story <span aria-hidden="true">→</span></a>
+                </div>
+                <div class="project-visual yumi-visual">
+                    <div class="visual-topline"><span class="status-dot" aria-hidden="true"></span> Yumi / Connected clinical context</div>
+                    <div class="record-sources"><span>Notes</span><span>Orders</span><span>Assessments</span><span>Results</span></div>
+                    <div class="connector" aria-hidden="true"></div>
+                    <div class="retrieval-node"><span class="eyebrow">Home-built retrieval</span><strong>The right record.<br>The right clinical context.</strong><span>Question relevance · Observation period · Source links</span></div>
+                    <div class="connector" aria-hidden="true"></div>
+                    <div class="review-node"><span aria-hidden="true">↳</span><div><strong>Evidence for review</strong><span>Answer + explanation + supporting record</span></div><span class="review-label">Clinician</span></div>
+                    <p class="visual-caption">A conceptual view of the retrieval workflow</p>
+                </div>
+            </article>
+            <article class="featured-project layr-project">
+                <div class="project-copy">
+                    <p class="eyebrow">02 / Layr</p>
+                    <h3><a href="post/layr.html">An MDS agent that<br>shows its work.</a></h3>
+                    <p class="role">Chief AI Scientist</p>
+                    <p>Building the retrieval and reasoning systems behind clinical assessment recommendations, with a path from each suggested answer back to its chart evidence.</p>
+                    <p>A home-built pipeline combines question-specific search, BM25 relevance, source weighting, and assessment date windows to assemble focused clinical context.</p>
+                    <a class="text-link" href="post/layr.html">Explore the Layr pipeline <span aria-hidden="true">→</span></a>
+                </div>
+                <div class="project-visual layr-visual">
+                    <div class="visual-topline">Layr / Inside the MDS agent</div>
+                    <ol class="retrieval-stages">
+                        <li><span>01</span><div><strong>Find relevant records</strong><p>Question-specific search and clinical terms</p></div></li>
+                        <li><span>02</span><div><strong>Rank the candidates</strong><p>BM25, source weighting, and recency</p></div></li>
+                        <li><span>03</span><div><strong>Reason with context</strong><p>Assessment window and focused source material</p></div></li>
+                        <li><span>04</span><div><strong>Return a traceable answer</strong><p>Recommendation, explanation, and source links</p></div></li>
+                    </ol>
+                    <p class="visual-caption">Built around the clinical question</p>
+                </div>
+            </article>
+        </section>
+        <section class="research-section" id="research" aria-labelledby="research-title">
+            <div class="shell section">
+                <div class="section-heading">
+                    <div><p class="eyebrow">Research &amp; experiments</p><h2 id="research-title">Intelligence in the world.</h2></div>
+                    <p>My research at Berkeley spans autonomous driving, generative models, human–AI interaction, and multi-agent reinforcement learning.</p>
+                </div>
+                <div class="research-grid">
+                    <a class="research-card" href="post/circles.html"><img src="img/research-circles.jpg" width="480" height="270" loading="lazy" alt="CIRCLES field-test vehicle fleet"><div><span class="eyebrow">Autonomous driving</span><h3>CIRCLES</h3><p>Bringing a speed planner to a field test with 100 automated vehicles.</p><span class="text-link">View project →</span></div></a>
+                    <a class="research-card" href="post/pora.html"><img src="img/research-pora.jpg" width="480" height="270" loading="lazy" alt="Generative prediction of future traffic occupancy"><div><span class="eyebrow">Generative modeling</span><h3>PORA</h3><p>Predicting vehicle motion and collision risk through generated future occupancy.</p><span class="text-link">View project →</span></div></a>
+                    <a class="research-card" href="post/gromit.html"><img src="img/research-gromit.jpg" width="480" height="270" loading="lazy" alt="Gromit diagram of runtime behavior generation"><div><span class="eyebrow">Human–AI interaction</span><h3>Gromit</h3><p>Generating interactive behavior at runtime. UIST 2024 Best Paper.</p><span class="text-link">View project →</span></div></a>
+                </div>
+                <div class="research-list">
+                    <a href="post/ecc24.html"><span>01</span><div><h3>Learning to control traffic</h3><p>Adaptive speed control with PDE/ODE traffic dynamics</p></div><span aria-hidden="true">↗</span></a>
+                    <a href="post/blos.html"><span>02</span><div><h3>BLOS</h3><p>A virtual reality bike simulator for California streets</p></div><span aria-hidden="true">↗</span></a>
+                    <a href="post/ar-assist.html"><span>03</span><div><h3>AR perception assistance</h3><p>Foundation models, amodal tracking, and augmented reality</p></div><span aria-hidden="true">↗</span></a>
+                    <a href="post/webauto.html"><span>04</span><div><h3>Vision-based browser automation</h3><p>Generative AI for everyday browser workflows</p></div><span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+        </section>
+        <section class="section shell education" id="about" aria-labelledby="education-title">
+            <div><p class="eyebrow">Academic foundation</p><h2 id="education-title">UC Berkeley.</h2><p>Research with <a href="https://bair.berkeley.edu/">Berkeley AI Research</a> and <a href="https://deepdrive.berkeley.edu/">Berkeley DeepDrive</a>.</p><a class="text-link" href="attachments/Resume___Han_Wang_2025.pdf">Full résumé <span aria-hidden="true">↗</span></a></div>
+            <div class="degrees">
+                <div><span>Expected December 2026</span><h3>Ph.D. in Civil &amp; Environmental Engineering</h3><p>Transportation Engineering</p></div>
+                <div><span>Expected December 2026</span><h3>M.S. in Electrical Engineering &amp; Computer Sciences</h3><p>EECS</p></div>
+                <div><span>2021</span><h3>M.Eng. in Transportation Engineering</h3></div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="shell footer-inner">
+            <div><p class="eyebrow">Keep in touch</p><h2>Let’s build something useful.</h2><a class="contact-link" href="mailto:hanw@berkeley.edu">hanw@berkeley.edu <span aria-hidden="true">↗</span></a></div>
+            <nav aria-label="Social links"><a href="https://www.linkedin.com/in/hanwcal/">LinkedIn ↗</a><a href="https://github.com/hanwCal">GitHub ↗</a><a href="https://scholar.google.com/citations?hl=en&amp;user=MyYz0tgAAAAJ">Google Scholar ↗</a><a href="https://huggingface.co/hanwcal">Hugging Face ↗</a><a href="https://www.instagram.com/han_ucb/">Photography ↗</a></nav>
+        </div>
+        <div class="shell footer-bottom"><span>Han Wang</span><span>CTO &amp; Co-founder of Yumi Health</span><a href="#main">Back to top ↑</a></div>
+    </footer>
 </body>
 </html>

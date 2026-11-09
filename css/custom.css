@@ -869,3 +869,165 @@ figure {
 .col-md-8.col-sm-7.col-xs-4 {
 	position: relative;
 }
+
+/* Portfolio styling for the existing research posts. */
+body#single {
+    --research-bg: #faf9f6;
+    --research-paper: #fffdf9;
+    --research-ink: #16303a;
+    --research-teal: #0f5f5b;
+    --research-muted: #596b70;
+    --research-line: rgba(20, 49, 60, .13);
+    --research-serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --research-sans: "Avenir Next", "Gill Sans", system-ui, sans-serif;
+    background: var(--research-bg);
+    color: var(--research-ink);
+    font-family: var(--research-sans);
+}
+
+#single :is(p, .read-more) {
+    font-family: inherit;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+#single .content-body :is(h1, h2, h3) {
+    font-family: var(--research-serif);
+    font-weight: 500;
+}
+
+#single .entry-title {
+    font-size: clamp(2.6rem, 3.4vw, 4.2rem);
+    line-height: 1.15;
+    padding-inline: 0;
+    text-wrap: balance;
+}
+
+#single .entry-content {
+    color: inherit;
+    font-weight: 400;
+}
+
+#single .entry-meta,
+#single .entry-meta a:not([href]),
+#single figcaption {
+    color: var(--research-muted);
+}
+
+#single :is(.post, .widget) {
+    background: var(--research-paper);
+    border: 1px solid var(--research-line);
+    border-radius: 16px;
+}
+
+#single .widget {
+    padding: 16px 20px;
+}
+
+#single a[href] {
+    color: var(--research-teal);
+    text-underline-offset: .2em;
+}
+
+#single .entry-content a[href],
+#single a[href]:hover {
+    text-decoration: underline;
+}
+
+#single :is(a[href], button, input, select, textarea, iframe, [tabindex]):focus {
+    outline: 3px solid var(--research-teal);
+    outline-offset: 3px;
+}
+
+#site-header.portfolio-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    min-height: 82px;
+    padding: 12px 0;
+    background: transparent;
+    border-color: var(--research-line);
+}
+
+#single .portfolio-brand {
+    color: var(--research-ink);
+    font-size: 24px;
+    font-weight: 650;
+    letter-spacing: -.06em;
+}
+
+.portfolio-brand span {
+    color: var(--research-teal);
+}
+
+.portfolio-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 clamp(16px, 3vw, 32px);
+}
+
+#single .portfolio-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--research-ink);
+}
+
+.portfolio-footer {
+    padding: 40px 0 32px;
+    background: #163b3a;
+    color: #d2e4df;
+}
+
+.portfolio-footer-inner {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.portfolio-footer-inner::before,
+.portfolio-footer-inner::after {
+    display: none;
+}
+
+.portfolio-footer h2 {
+    color: var(--research-paper);
+    font-family: var(--research-serif);
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.portfolio-footer li + li {
+    margin-top: 7px;
+}
+
+#single .portfolio-footer a {
+    color: var(--research-paper);
+    overflow-wrap: anywhere;
+}
+
+#single .portfolio-footer a:focus {
+    outline-color: var(--research-paper);
+}
+
+@media (max-width: 767px) {
+    #site-header.portfolio-header {
+        margin-bottom: 24px;
+    }
+
+    #single .widget {
+        margin-top: 16px;
+    }
+
+    .portfolio-footer-inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 440px) {
+    .portfolio-footer-inner {
+        grid-template-columns: 1fr;
+    }
+}

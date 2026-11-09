@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="How Han Wang helped build and evaluate Layr’s Minimum Data Set agent, from home-built chart retrieval to source-linked recommendations.">
+    <title>Layr’s MDS agent shows its work | Han Wang</title>
+    <link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body class="project-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="brand" href="../index.html">Han Wang</a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../attachments/Resume___Han_Wang_2025.pdf">Résumé</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="shell" id="main">
+        <article>
+            <header class="article-header">
+                <p class="eyebrow">Project · Layr</p>
+                <h1>Layr’s MDS agent shows its work</h1>
+                <p class="lede">I helped build and evaluate an agent that reads the resident chart, proposes answers for skilled nursing assessments, and shows the records behind each recommendation.</p>
+                <p class="article-meta">Han Wang · Chief AI Scientist at Layr</p>
+            </header>
+
+            <div class="article-body">
+                <section aria-labelledby="assessment">
+                    <h2 id="assessment">Start with the assessment question</h2>
+                    <p>The Minimum Data Set (MDS) is a standardized assessment of nursing home residents. Answering an item can mean piecing together a progress note, a diagnosis, and an administration record. The assessment reference date anchors the observation period, and each item has its own coding criteria. <a href="https://www.cms.gov/medicare/quality/nursing-home-improvement/resident-assessment-instrument-manual">CMS MDS 3.0 manual</a></p>
+                    <p>The same resident chart can support different answers at different assessment dates. A record may be relevant to one observation period and fall outside the next. Retrieval needs the question and its date context to decide which records belong in the evidence set.</p>
+                </section>
+
+                <section aria-labelledby="retrieval">
+                    <h2 id="retrieval">Build retrieval around the chart</h2>
+                    <p>Our home-built retrieval pipeline combines item-specific keyword search with the structure of the resident chart. The ranking weighs text relevance, how close each record is to the assessment date, the type of source, and which field matched. That gives the model a focused set of records to interpret against the item’s coding criteria.</p>
+                    <p>We use BM25 to score how well the search terms match each record, then combine that score with source and field weights and recency. Building this layer in-house lets us tune retrieval for the question being answered and inspect why one record ranked above another. The model receives a curated context with source identifiers that can be carried through to the explanation.</p>
+                    <ol class="pipeline" aria-label="How Layr turns chart records into a suggested answer">
+                        <li><strong>Find relevant records</strong><span>Use the item and its observation period to retrieve candidate chart records.</span></li>
+                        <li><strong>Rank the candidates</strong><span>Combine keyword relevance with timing, source type, and the chart field that matched.</span></li>
+                        <li><strong>Propose an answer</strong><span>Use the selected records and item criteria to produce a suggested value with an explanation.</span></li>
+                        <li><strong>Show the source</strong><span>Link the suggestion to chart records so a reviewer can verify the supporting evidence.</span></li>
+                    </ol>
+                    <p>The review screen keeps the explanation beside the source links. A clinician can open the underlying record to see what it says and decide whether it supports the proposed answer.</p>
+                </section>
+
+                <section aria-labelledby="evaluation">
+                    <h2 id="evaluation">Evaluate the answer and its evidence</h2>
+                    <p>I built calibration tools for MDS recommendations and diagnosis coding, worked on retrieval ranking and item-specific lookbacks, and helped integrate a fine-tuned model for skilled nursing assessments. The calibration tools let us compare proposed values with reference assessments and inspect the records and scores behind each run.</p>
+                    <p>When a proposed answer disagrees with the reference, I can trace the case back through the pipeline. I can check whether retrieval surfaced the right record, whether the record was in the observation window, and whether the model interpreted it correctly. Those checks tell me where to make the next change.</p>
+                </section>
+
+                <p><a href="https://www.layr.ai/">Visit Layr</a></p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell">
+            <a href="../index.html#projects">All projects</a>
+            <a href="yumi.html">Read about Yumi</a>
+        </div>
+    </footer>
+</body>
+</html>
